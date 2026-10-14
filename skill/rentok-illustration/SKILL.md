@@ -6,7 +6,7 @@ description: Generate RentOk icons, 3D objects, isometric property rooms and mas
 # RentOk illustration
 
 Makes images that look like they belong in RentOk. The references and the
-house rules live in the private repo
+house rules live in the public repo
 **https://github.com/eazyapp-tech/rentok-illustrations** and are downloaded
 to `~/.rentok-illustrations` on first use. This skill folder holds only the
 instructions and scripts, so it can be shared as-is.
@@ -20,8 +20,8 @@ Run `zsh SKILL_DIR/scripts/preflight.sh`.
 - Every line `OK` → continue.
 - Any `FIX` line → show the person that line, in plain words, and stop for
   that item. Typical fixes:
-  - **No repo access:** ask Nitish (RentOk) to add your GitHub account to
-    `eazyapp-tech/rentok-illustrations`, then run `gh auth login`.
+  - **References not downloaded:** check the internet connection and that
+    `git` works; the repo is public, so no login is needed.
   - **No Codex:** `npm install -g @openai/codex`, then `codex login` with
     your ChatGPT account.
   - **Plan question:** Codex comes with ChatGPT sign-in. Whether a *free*

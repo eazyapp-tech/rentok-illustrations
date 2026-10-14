@@ -19,8 +19,8 @@ else
   if git clone -q "$REPO_URL" "$HOME_DIR" 2>/dev/null; then
     echo "OK references: downloaded to $HOME_DIR"
   else
-    echo "FIX references: no access to eazyapp-tech/rentok-illustrations."
-    echo "    Ask Nitish to add you to the repo, then run: gh auth login"
+    echo "FIX references: could not download eazyapp-tech/rentok-illustrations."
+    echo "    Check your internet connection, then try again."
     fail=1
   fi
 fi

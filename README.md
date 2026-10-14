@@ -5,19 +5,18 @@ plus the Claude Code skill that uses them.
 
 ## Use it (Claude Code)
 
-1. Get access to this repo (ask Nitish).
-2. Copy the skill folder into your skills:
+1. Copy the skill folder into your skills:
    ```bash
    git clone https://github.com/eazyapp-tech/rentok-illustrations.git ~/.rentok-illustrations
    mkdir -p ~/.claude/skills && cp -R ~/.rentok-illustrations/skill/rentok-illustration ~/.claude/skills/
    ```
    (Or just copy the `skill/rentok-illustration` folder someone sent you; it
    downloads this repo by itself on first use.)
-3. Install Codex for image generation and sign in:
+2. Install Codex for image generation and sign in:
    ```bash
    npm install -g @openai/codex && codex login
    ```
-4. In Claude Code, ask: "make a RentOk icon of a key handover".
+3. In Claude Code, ask: "make a RentOk icon of a key handover".
 
 No Codex? The skill still writes the prompt and tells you which reference
 images to attach in ChatGPT.
