@@ -19,7 +19,7 @@ case $kind in
 esac
 
 out="${TMPDIR:-/tmp}/rentok-illustration/$name"
-mkdir -p "$out"
+rm -rf "$out"; mkdir -p "$out"
 refs=(-i "$HOME_DIR/$board")
 for r in "$@"; do refs+=(-i "${r:A}"); done
 style=$(cat "$HOME_DIR/style.md")
@@ -34,9 +34,13 @@ Output: square PNG, transparent background, the subject centred filling about 80
 
 pids=()
 for i in $(seq 1 $count); do
-  ( codex exec "$prompt Save the final PNG exactly at $out/option-$i.png. Reply only with the path." \
-      --skip-git-repo-check --sandbox workspace-write -C "$out" "${refs[@]}" \
-      < /dev/null > "$out/option-$i.log" 2>&1 ) &
+  # Each run gets its own folder: in a shared one, parallel runs picked
+  # up each other's image and saved duplicates.
+  run="$out/run-$i"; mkdir -p "$run"
+  ( codex exec "$prompt Save the final PNG exactly at $run/option.png. Reply only with the path." \
+      --skip-git-repo-check --sandbox workspace-write -C "$run" "${refs[@]}" \
+      < /dev/null > "$out/option-$i.log" 2>&1 \
+    && [[ -f "$run/option.png" ]] && mv "$run/option.png" "$out/option-$i.png" ) &
   pids+=($!)
 done
 for p in $pids; do wait $p || true; done
