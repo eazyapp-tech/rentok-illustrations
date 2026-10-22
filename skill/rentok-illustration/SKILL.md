@@ -26,8 +26,8 @@ Run `zsh SKILL_DIR/scripts/preflight.sh`.
     your ChatGPT account.
   - **Plan question:** Codex comes with ChatGPT sign-in. Whether a *free*
     ChatGPT plan can generate images through Codex is not confirmed; if
-    generation returns no image, go to step 6 (fallback).
-- If only Codex is missing but the references are there, offer step 6.
+    generation returns no image, go to step 7 (fallback).
+- If only Codex is missing but the references are there, offer step 7.
 
 ## 2. Understand the request
 
@@ -35,7 +35,8 @@ Ask only what is missing, one short question at a time:
 - **What** to draw, in one line (e.g. "a key being handed over").
 - **Kind** — pick it yourself when obvious, else ask:
   `icon` (small app icon), `object` (RentOk object or avatar),
-  `property` (room, kitchen, building), `mascot` (the moustache man).
+  `property` (room, kitchen, building), `mascot` (the moustache man),
+  `landmark` (flat city landmark, e.g. India Gate, for city pickers).
 - **Name** for the file, snake_case (suggest one).
 
 Read `~/.rentok-illustrations/style.md` before writing anything. It is the
@@ -71,7 +72,7 @@ python3 -I SKILL_DIR/scripts/place.py <chosen.png> <project_root> <asset_dir> <n
 
 - `asset_dir`: reuse the folder where the screen's other images already are
   (look for `Image.asset` calls near the code); otherwise ask.
-- It resizes (icons 144 px, property and mascot 600 px), never overwrites,
+- It resizes (icons 144 px, landmarks 300 px, property and mascot 600 px), never overwrites,
   and adds the folder to `pubspec.yaml` if it is missing.
 - Tell the person the path and the line to use it, e.g.
   `Image.asset('assets/image/x/key.png', width: 40)`.
@@ -84,7 +85,22 @@ they liked or rejected options, add one dated line to "Learned" in
 `style.md`. Commit and push only with their yes; if they have no write
 access, give them the file and the line to send to Nitish.
 
-## 6. Fallback (no Codex or no image generation)
+## 6. Refresh the boards from Figma
+
+The master copy of every board is the Figma page **Illustration library**
+(file `3kGYNeMeWsIj9ckOlENbNV`, node `1345:46118`; node per board in
+`style.md`). When someone adds or changes illustrations there, or shares that
+link and asks to update the skill:
+
+1. For each board node, call the Figma MCP `get_screenshot` with
+   `maxDimension: 3000` and `contentsOnly: true`, then `curl -fL` the returned
+   URL straight to `~/.rentok-illustrations/references/<kind>/board-*.png`.
+2. Look at each new board next to the old one. A new group in Figma means a
+   new kind: add a row to the kinds table and a rules section in `style.md`,
+   and a `case` line in `scripts/generate.sh`.
+3. Add a dated "Learned" line, then commit; push only with a yes.
+
+## 7. Fallback (no Codex or no image generation)
 
 Write the full prompt the script would send (the request + all of
 `style.md`) and tell the person to:

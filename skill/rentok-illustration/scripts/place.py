@@ -2,7 +2,7 @@
 
 usage: python3 -I place.py <chosen.png> <project_root> <asset_dir> <name> <kind>
 
-- Resizes with macOS `sips`: icons/objects to 144 px, property/mascot to 600 px.
+- Resizes with macOS `sips`: icons/objects to 144 px, landmarks to 300 px, property/mascot to 600 px.
 - Saves <project_root>/<asset_dir>/<name>.png (never overwrites; adds _2, _3).
 - Adds "- <asset_dir>/" under flutter: assets: in pubspec.yaml when that
   folder (or a parent folder entry) is not listed yet.
@@ -15,7 +15,7 @@ import sys
 src, root, asset_dir, name, kind = sys.argv[1:6]
 root = pathlib.Path(root)
 asset_dir = asset_dir.strip('/')
-size = 600 if kind in ('property', 'mascot') else 144
+size = 600 if kind in ('property', 'mascot') else 300 if kind == 'landmark' else 144
 
 folder = root / asset_dir
 folder.mkdir(parents=True, exist_ok=True)

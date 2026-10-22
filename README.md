@@ -31,7 +31,7 @@ Codex does not load Claude skills. Open this repo in Codex and ask; it reads
 | Path | What |
 |---|---|
 | `style.md` | House rules sent with every prompt. Change by pull request. |
-| `references/` | Reference boards: icons, objects, property, mascot. |
+| `references/` | Reference boards: icons, objects, property, mascot, landmark. Exported from the Figma Illustration library (node `1345:46118`); see `style.md`. |
 | `approved/` | Icons already shipped in the app; also used as references. |
 | `skill/rentok-illustration/` | The Claude Code skill and its scripts. |
 

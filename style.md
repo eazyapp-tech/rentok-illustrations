@@ -11,11 +11,25 @@ every prompt. Change them here (by pull request), not in the prompt.
 | `object` | RentOk objects: agreement, rupee coin, shield, chat alert, food, avatars | `references/people-and-objects/board-basic-icons.png` |
 | `property` | Rooms, kitchens, bathrooms, beds, buildings, flats | `references/property/board-property.png` |
 | `mascot` | Scenes with the RentOk mascot | `references/mascot/board-mascot.png` |
+| `landmark` | City landmarks for city pickers and location screens | `references/landmark/board-landmark.png` |
+
+The boards are exports of the Figma page **Illustration library** in
+*Rentok · Design System*
+(https://www.figma.com/design/3kGYNeMeWsIj9ckOlENbNV/Rentok--Design-System?node-id=1345-46118).
+Figma is the master copy. When a board there changes, re-export it here.
+
+| Board | Figma node |
+|---|---|
+| Mascot (20 poses) | `1212:329` |
+| Property (12 rooms and buildings) | `1212:315` |
+| Basic icons (11 objects) | `1212:316` |
+| More icons (sheet) | `1212:330` |
+| Landmark (city sheet) | `1213:343` |
 
 Also attach 1–2 icons from `approved/` that are closest to the request. They
 are icons already shipped in the app.
 
-## Look (all kinds)
+## Look (all kinds except `landmark`)
 
 - Soft 3D, matte clay to light glossy plastic. Rounded, chunky shapes.
 - Soft studio light from the top-left. A gentle contact shadow under the object.
@@ -33,6 +47,16 @@ are icons already shipped in the app.
 - Warm cream walls, light wood floor and furniture, white bedding, small green plant.
 - Calm and tidy. No people.
 
+## Landmark
+
+- The one kind that is not 3D: flat vector illustration, simple shapes, no
+  outline, light shading in two or three tones of the same colour.
+- Front view, symmetric, on a small strip of green bush at the base.
+- Warm saffron and amber for stone gateways and palaces; brick red or off-white
+  only when the real building is that colour (as on the board).
+- One landmark per image, recognisable from its outline. Transparent background.
+- Never mix this flat style into the other kinds, and never make a landmark 3D.
+
 ## Mascot
 
 - The mascot is the older man with a moustache, round glasses, short dark hair,
@@ -45,10 +69,12 @@ are icons already shipped in the app.
 ## Never
 
 - Text or numbers drawn inside the image.
-- A different art style mixed in (flat, line, photo-real, anime).
+- A different art style mixed in (flat, line, photo-real, anime). Landmarks
+  are the exception: they are flat on purpose.
 - Busy backgrounds or scenes around an icon.
 - Faces on objects.
 
 ## Learned (add a line when the owner rejects or approves something)
 
+- 2026-10-22: boards re-exported from the Figma Illustration library; `landmark` kind added.
 - 2026-10-13: tiny icons inside small tabs (24 pt) look muddy; put clay icons at 40 pt or larger.

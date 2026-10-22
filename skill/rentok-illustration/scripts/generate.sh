@@ -1,6 +1,6 @@
 #!/bin/zsh
 # usage: generate.sh <kind> <name> "<what to draw>" [count] [extra-ref.png ...]
-#   kind  icon | object | property | mascot   (see style.md)
+#   kind  icon | object | property | mascot | landmark   (see style.md)
 #   name  snake_case file name, e.g. key_handover
 # Makes <count> options (default 3) with Codex image generation, in parallel.
 # Prints the folder that holds option-1.png ... option-N.png.
@@ -8,13 +8,14 @@ set -e
 HOME_DIR="${RENTOK_ILLUSTRATIONS_HOME:-$HOME/.rentok-illustrations}"
 kind=$1; name=$2; what=$3; count=${4:-3}; shift 4 2>/dev/null || shift $#
 [[ -z $kind || -z $name || -z $what ]] && {
-  echo 'usage: generate.sh <icon|object|property|mascot> <name> "<what to draw>" [count] [extra-ref ...]' >&2; exit 2; }
+  echo 'usage: generate.sh <icon|object|property|mascot|landmark> <name> "<what to draw>" [count] [extra-ref ...]' >&2; exit 2; }
 
 case $kind in
   icon)     board=references/icons/board-more-icons.png ;;
   object)   board=references/people-and-objects/board-basic-icons.png ;;
   property) board=references/property/board-property.png ;;
   mascot)   board=references/mascot/board-mascot.png ;;
+  landmark) board=references/landmark/board-landmark.png ;;
   *) echo "unknown kind: $kind" >&2; exit 2 ;;
 esac
 
